@@ -3,6 +3,16 @@
 
 #include "Arduino.h"
 
+//       _ _ A _ _
+//      |         |
+//      F         B
+//      |         |
+//      |_ _ G _ _|
+//      |         |
+//      E         C
+//      |         |
+//      |_ _ D _ _| *H
+
 // SEGMENT PINS
 #define SEGMENT_A_PIN 11
 #define SEGMENT_B_PIN 7
@@ -31,15 +41,19 @@ struct SecSeg_Digit
 
 class DisplayController
 {
+
 public:
     void initalize_output_pins();
     void print_number_on_digit(uint8_t, uint8_t);
+    void activate_digit(uint8_t digit);
+    void print_number(uint8_t number);
 
 private:
     static SevSeg_Number numbers[10];
     static SecSeg_Digit digits[4];
     static uint8_t display_segment_pins_ordered[7];
     static uint8_t display_display_segment_pins_ordered[7];
+    
 };
 
 #endif
